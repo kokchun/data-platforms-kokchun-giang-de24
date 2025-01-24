@@ -1,0 +1,8 @@
+services:
+  python-app:
+    build: .
+    volumes:
+      - .:/app
+  
+# container2
+#   image: ...  
