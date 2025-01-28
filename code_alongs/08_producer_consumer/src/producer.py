@@ -7,12 +7,14 @@ data_path = Path(__file__).parents[1] / "data"
 
 # print(data_path)
 
+# reads in jokes.json through its absolute path 
 with open(data_path / "jokes.json", "r") as file:
     jokes = json.load(file)
 
 
 # pprint(jokes)
 
+# a form of entry point for interacting with Kafka, localhost:9092 is port mapped to broker container
 app = Application(broker_address="localhost:9092", consumer_group="text-splitter")
 
 jokes_topic = app.topic(name="jokes", value_serializer="json")
@@ -37,5 +39,6 @@ def main():
 
 # run this code only when executing this script and not when importing this module
 if __name__ == "__main__":
+    
     # pprint(jokes)
     main()
