@@ -47,6 +47,6 @@ def main():
 
 
 if __name__ == "__main__":
-    coin_data = get_latest_coin_data()
-
-    pprint(coin_data)
+    # coin_data = get_latest_coin_data()
+    # pprint(coin_data)
+    main()
