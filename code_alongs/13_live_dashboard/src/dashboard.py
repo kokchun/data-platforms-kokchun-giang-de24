@@ -14,14 +14,21 @@ connection_string = f"postgresql+psycopg2://{POSTGRES_USER}:{POSTGRES_PASSWORD}@
 
 engine = create_engine(connection_string)
 
-query = "SELECT * FROM bitcoin;"
+def load_data(query):
+    with engine.connect() as conn: 
+        df = pd.read_sql(query, conn)
+    return df
 
-with engine.connect() as conn: 
-    df = pd.read_sql(query, conn)
+def layout():
+    df = load_data("SELECT * FROM bitcoin;")
 
+    st.markdown("# Bitcoin data")
 
-st.markdown("# Bitcoin data")
+    st.markdown("## Latest data")
 
-st.markdown("## Latest data")
+    st.markdown("Latest data directly from postgres database in a docker container")
 
-st.dataframe(df.tail())
+    st.dataframe(df.tail())
+
+if __name__ == "__main__":
+    layout()
