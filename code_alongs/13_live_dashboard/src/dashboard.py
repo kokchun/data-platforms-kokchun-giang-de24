@@ -30,5 +30,9 @@ def layout():
 
     st.dataframe(df.tail())
 
+    st.markdown("## Bitcoin latest price in USD")
+
+    # plotting code
+
 if __name__ == "__main__":
     layout()
